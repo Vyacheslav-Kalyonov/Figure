@@ -1,9 +1,10 @@
 import java.util.List;
 
-public class TruncatedSphere extends Figure {
+public class TruncatedSphere extends Figure implements Constants {
 
     public static final int SIZE_POINTS_FOR_VALID = 3;
     public static final int COEFFICIENT = 2;
+    private static final int COEFFICIENT_SPHERE = 4;
 
     private final List<int[]> points;
 
@@ -13,6 +14,9 @@ public class TruncatedSphere extends Figure {
 
     public TruncatedSphere(List<int[]> points) {
         this.points = points;
+        center = points.get(Constants.INDEX_ZERO);
+        pointOnSphere = points.get(Constants.INDEX_ONE);
+        pointOnCircle = points.get(Constants.INDEX_TWO);
     }
 
     @Override
@@ -21,10 +25,6 @@ public class TruncatedSphere extends Figure {
             System.out.println("Figure is invalid");
             return false;
         }
-
-        center = points.get(Constants.INDEX_ZERO);
-        pointOnSphere = points.get(Constants.INDEX_ONE);
-        pointOnCircle = points.get(Constants.INDEX_TWO);
 
         if (pointOnSphere[Constants.INDEX_ZERO] == center[Constants.INDEX_ZERO]
                 && pointOnSphere[Constants.INDEX_ONE] == center[Constants.INDEX_ONE]
@@ -41,14 +41,10 @@ public class TruncatedSphere extends Figure {
     @Override
     public void figureArea() {
         double r = super.distance3D(center, pointOnSphere);
-        double h = Math.abs(r + center[Constants.INDEX_TWO] - pointOnCircle[Constants.INDEX_TWO]);
-        double area = (double) Math.round(Math.PI * (COEFFICIENT * r * h + r * r) * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
+        double h = Math.abs(r - Math.abs(center[INDEX_TWO] - pointOnCircle[INDEX_TWO]));
+        double areaSphere = (double) Math.round(COEFFICIENT_SPHERE * Math.PI * r * r * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
+        double area = areaSphere - (double) Math.round((COEFFICIENT * Math.PI * r * h) * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
 
         System.out.println(Constants.PATTERN_AREA + area);
-    }
-
-    @Override
-    public void perimeterFigure() {
-        System.out.println(Constants.PATTERN_NO_PERIMETER_FIGURE);
     }
 }

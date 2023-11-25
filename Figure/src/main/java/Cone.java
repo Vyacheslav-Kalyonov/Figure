@@ -11,6 +11,10 @@ public class Cone extends Figure {
 
     public Cone(List<int[]> points) {
         this.points = points;
+
+        center = points.get(Constants.INDEX_ZERO);
+        point = points.get(Constants.INDEX_ONE);
+        vertex = points.get(Constants.INDEX_TWO);
     }
 
 
@@ -21,9 +25,6 @@ public class Cone extends Figure {
             return false;
         }
 
-        center = points.get(Constants.INDEX_ZERO);
-        point = points.get(Constants.INDEX_ONE);
-        vertex = points.get(Constants.INDEX_TWO);
 
         if (center[Constants.INDEX_ZERO] == vertex[Constants.INDEX_ZERO]
                 && center[Constants.INDEX_ONE] == vertex[Constants.INDEX_ONE]
@@ -46,10 +47,5 @@ public class Cone extends Figure {
         double ans = Math.PI * r * l + Math.PI * r * r;
         ans = (double) (Math.round(ans * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND);
         System.out.println(Constants.PATTERN_AREA + ans);
-    }
-
-    @Override
-    public final void perimeterFigure() {
-        System.out.println(Constants.PATTERN_NO_PERIMETER_FIGURE);
     }
 }

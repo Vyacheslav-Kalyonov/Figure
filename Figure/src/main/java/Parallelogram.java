@@ -17,12 +17,10 @@ public class Parallelogram extends Figure {
             return false;
         }
 
-        double a = super.distance(points.get(Constants.INDEX_ZERO), points.get(Constants.INDEX_ONE));
-        double b = super.distance(points.get(Constants.INDEX_ONE), points.get(Constants.INDEX_TWO));
-        if ((points.get(Constants.INDEX_ZERO)[Constants.INDEX_ONE] == points.get(Constants.INDEX_THREE)[Constants.INDEX_ONE])
-                && (points.get(Constants.INDEX_ONE)[Constants.INDEX_ONE] == points.get(Constants.INDEX_TWO)[Constants.INDEX_ONE])
-                && (super.distance(points.get(Constants.INDEX_ZERO), points.get(Constants.INDEX_ONE))
-                == super.distance(points.get(Constants.INDEX_TWO), points.get(Constants.INDEX_THREE)))) {
+        if (points.get(Constants.INDEX_ZERO)[Constants.INDEX_ONE] == points.get(Constants.INDEX_THREE)[Constants.INDEX_ONE]
+                && points.get(Constants.INDEX_ONE)[Constants.INDEX_ONE] == points.get(Constants.INDEX_TWO)[Constants.INDEX_ONE]
+                && super.distance(points.get(Constants.INDEX_ZERO), points.get(Constants.INDEX_ONE))
+                == super.distance(points.get(Constants.INDEX_TWO), points.get(Constants.INDEX_THREE))) {
             System.out.println(Constants.PATTERN_IS_VALID);
             return true;
         } else {

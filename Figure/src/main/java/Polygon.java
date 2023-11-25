@@ -16,8 +16,8 @@ public class Polygon extends Figure {
             return false;
         }
         for (int i = Constants.INDEX_ONE; i < points.size(); i++) {
-            if ((points.get(i)[Constants.INDEX_ZERO] == points.get(i - Constants.INDEX_ONE)[Constants.INDEX_ZERO])
-                    && (points.get(i)[Constants.INDEX_ONE] == points.get(i - Constants.INDEX_ONE)[Constants.INDEX_ONE])) {
+            if (points.get(i)[Constants.INDEX_ZERO] == points.get(i - Constants.INDEX_ONE)[Constants.INDEX_ZERO]
+                    && points.get(i)[Constants.INDEX_ONE] == points.get(i - Constants.INDEX_ONE)[Constants.INDEX_ONE]) {
                 System.out.println(Constants.PATTERN_IS_INVALID);
                 return false;
             }

@@ -11,6 +11,9 @@ public class Sphere extends Figure {
 
     public Sphere(List<int[]> points) {
         this.points = points;
+
+        center = points.get(Constants.INDEX_ZERO);
+        point = points.get(Constants.INDEX_ONE);
     }
 
     @Override
@@ -19,9 +22,6 @@ public class Sphere extends Figure {
             System.out.println(Constants.PATTERN_IS_INVALID);
             return false;
         }
-
-        center = points.get(Constants.INDEX_ZERO);
-        point = points.get(Constants.INDEX_ONE);
 
         if (point[Constants.INDEX_ZERO] == center[Constants.INDEX_ZERO] && point[Constants.INDEX_ONE] == center[Constants.INDEX_ONE]
                 && point[Constants.INDEX_TWO] == center[Constants.INDEX_TWO]) {
@@ -38,10 +38,5 @@ public class Sphere extends Figure {
         double r = super.distance3D(center, point);
         double area = (double) Math.round(COEFFICIENT * Math.PI * r * r * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
         System.out.println(Constants.PATTERN_AREA + area);
-    }
-
-    @Override
-    public final void perimeterFigure() {
-        System.out.println(Constants.PATTERN_NO_PERIMETER_FIGURE);
     }
 }

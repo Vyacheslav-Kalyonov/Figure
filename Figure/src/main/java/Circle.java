@@ -10,6 +10,9 @@ public final class Circle extends Figure {
 
     public Circle(List<int[]> points) {
         this.points = points;
+
+        center = points.get(Constants.INDEX_ZERO);
+        point = points.get(Constants.INDEX_ONE);
     }
 
     @Override
@@ -19,10 +22,7 @@ public final class Circle extends Figure {
             return false;
         }
 
-        center = points.get(Constants.INDEX_ZERO);
-        point = points.get(Constants.INDEX_ONE);
-
-        if ((center[Constants.INDEX_ZERO] != point[Constants.INDEX_ZERO]) && (center[Constants.INDEX_ONE] != point[Constants.INDEX_ONE])) {
+        if (center[Constants.INDEX_ZERO] != point[Constants.INDEX_ZERO] && center[Constants.INDEX_ONE] != point[Constants.INDEX_ONE]) {
             System.out.println(Constants.PATTERN_IS_VALID);
             return true;
         } else {
@@ -35,13 +35,13 @@ public final class Circle extends Figure {
     public void figureArea() {
         double r = super.distance(center, point);
         double area = (double) Math.round(Math.PI * r * r * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
-        System.out.println(Constants.PATTERN_AREA + area);
+        System.out.print(Constants.PATTERN_AREA + area);
     }
 
     @Override
     public void perimeterFigure() {
         double r = super.distance(center, point);
         double perimeter = (double) Math.round(Math.PI * r * COEFFICIENT * Constants.NUMBER_FOR_ROUND) / Constants.NUMBER_FOR_ROUND;
-        System.out.println(Constants.PATTERN_PERIMETER_FIGURE + perimeter);
+        System.out.print(Constants.PATTERN_PERIMETER_FIGURE + perimeter);
     }
 }

@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Constants {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(INPUT_DATA);
         Figure figure = choiceFigure(scanner);
         while (figure != null) {
 
@@ -21,27 +22,27 @@ public class Main {
         String nameFigure = scanner.nextLine();
         Figure figure = null;
 
-        if (nameFigure.contains("END")) {
+        if (nameFigure.contains(END_CHOICE_FIGURE)) {
             return null;
         }
 
-        if (nameFigure.contains("FIGURE")) {
+        if (nameFigure.contains(FIGURE_NAME)) {
             return new Figure();
         }
 
         List<int[]> points = input(scanner);
 
         switch (nameFigure) {
-            case "CIRCLE" -> figure = new Circle(points);
-            case "SQUARE" -> figure = new Square(points);
-            case "RECTANGLE" -> figure = new Rectangle(points);
-            case "PARALLELOGRAM" -> figure = new Parallelogram(points);
-            case "TRIANGLE" -> figure = new Triangle(points);
-            case "POLYGON" -> figure = new Polygon(points);
-            case "CONE" -> figure = new Cone(points);
-            case "CYLINDER" -> figure = new Cylinder(points);
-            case "SPHERE" -> figure = new Sphere(points);
-            case "TRUNCATED SPHERE" -> figure = new TruncatedSphere(points);
+            case CIRCLE_NAME -> figure = new Circle(points);
+            case SQUARE_NAME -> figure = new Square(points);
+            case RECTANGLE_NAME -> figure = new Rectangle(points);
+            case PARALLELOGRAM_NAME -> figure = new Parallelogram(points);
+            case TRIANGLE_NAME -> figure = new Triangle(points);
+            case POLYGON_NAME -> figure = new Polygon(points);
+            case CONE_NAME -> figure = new Cone(points);
+            case CYLINDER_NAME -> figure = new Cylinder(points);
+            case SPHERE_NAME -> figure = new Sphere(points);
+            case TRUNCATED_SPHERE_NAME -> figure = new TruncatedSphere(points);
         }
 
         return figure;
@@ -51,7 +52,6 @@ public class Main {
         String data;
         String pattern = "(-?\\d+\\s-?\\d+\\s-?\\d+)|(-?\\d+\\s-?\\d+)";
         List<int[]> ans = new ArrayList<>();
-
         do {
             data = scanner.nextLine();
             if (data.matches(pattern)) {
@@ -63,10 +63,10 @@ public class Main {
                     coordinates[counter++] = Integer.parseInt(element);
                 }
                 ans.add(coordinates);
-            } else if (!data.contains("STOP_INPUT")) {
-                System.out.println("Please, retype");
+            } else if (!data.contains(STOP_INPUT_DATE)) {
+                System.out.println(RETYPE_POINT);
             }
-        } while (!data.contains("STOP_INPUT"));
+        } while (!data.contains(STOP_INPUT_DATE));
 
         return ans;
     }

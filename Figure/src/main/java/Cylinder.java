@@ -25,13 +25,13 @@ public class Cylinder extends Figure {
         centerHigh = points.get(Constants.INDEX_ONE);
         point = points.get(Constants.INDEX_TWO);
 
-        boolean b = (centerLow[Constants.INDEX_TWO] == point[Constants.INDEX_TWO]
+        boolean validCenter = (centerLow[Constants.INDEX_TWO] == point[Constants.INDEX_TWO]
                 && super.distance(centerLow, point) != Constants.INDEX_ZERO)
                 || (centerHigh[Constants.INDEX_TWO] == point[Constants.INDEX_TWO]
                 && super.distance(centerHigh, point) != Constants.INDEX_ZERO);
         if (centerLow[Constants.INDEX_ZERO] == centerHigh[Constants.INDEX_ZERO]
                 && centerLow[Constants.INDEX_ONE] == centerHigh[Constants.INDEX_ONE]
-                && centerLow[Constants.INDEX_TWO] != centerHigh[Constants.INDEX_TWO] && b) {
+                && centerLow[Constants.INDEX_TWO] != centerHigh[Constants.INDEX_TWO] && validCenter) {
             System.out.println(Constants.PATTERN_IS_VALID);
             return true;
         } else {
@@ -48,10 +48,5 @@ public class Cylinder extends Figure {
                 / Constants.NUMBER_FOR_ROUND;
 
         System.out.println(Constants.PATTERN_AREA + area);
-    }
-
-    @Override
-    public final void perimeterFigure() {
-        System.out.println(Constants.PATTERN_NO_PERIMETER_FIGURE);
     }
 }
